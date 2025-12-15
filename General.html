@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Directorio de Negocios LIFE TIMES</title>
+    <title>Directorio de Negocios LIFE TIMES - General</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -46,7 +46,6 @@
             font-weight: 700;
             letter-spacing: 1px;
             color: #fff;
-            cursor: pointer;
             transition: transform 0.3s;
         }
 
@@ -73,11 +72,12 @@
             padding: 15px;
             margin-bottom: 8px;
             border-radius: 8px;
-            cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             font-weight: 500;
+            text-decoration: none;
+            color: white;
         }
 
         .categoria-item:hover {
@@ -100,10 +100,10 @@
         .btn-subir-negocio {
             margin: 20px 15px;
             padding: 15px;
-            background-color: rgba(128, 128, 128, 0.3); /* Gris transparente */
+            background-color: rgba(128, 128, 128, 0.3);
             color: white;
             border: none;
-            border-radius: 12px; /* Esquinas redondeadas */
+            border-radius: 12px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
@@ -113,6 +113,7 @@
             justify-content: center;
             gap: 10px;
             text-align: center;
+            width: calc(100% - 30px);
         }
 
         .btn-subir-negocio:hover {
@@ -123,51 +124,6 @@
 
         .btn-subir-negocio i {
             font-size: 18px;
-        }
-
-        /* Botón de información (signo de interrogación) */
-        .btn-info {
-            position: fixed;
-            bottom: 30px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
-            background-color: #c90f0f;
-            color: white;
-            border-radius: 50%;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-info:hover {
-            width: 300px;
-            border-radius: 30px;
-            justify-content: flex-start;
-            padding-left: 25px;
-        }
-
-        .btn-info-text {
-            white-space: nowrap;
-            opacity: 0;
-            max-width: 0;
-            overflow: hidden;
-            transition: opacity 0.3s, max-width 0.5s;
-            font-size: 16px;
-            font-weight: 600;
-            margin-left: 10px;
-        }
-
-        .btn-info:hover .btn-info-text {
-            opacity: 1;
-            max-width: 200px;
         }
 
         /* Contenido principal */
@@ -181,12 +137,12 @@
             overflow-y: auto;
         }
 
-        /* Navegación superior - SIN LOGO */
+        /* Navegación superior */
         .top-nav {
             background-color: white;
             padding: 15px 30px;
             display: flex;
-            justify-content: flex-end; /* Alineado a la derecha */
+            justify-content: flex-end;
             align-items: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             position: sticky;
@@ -226,94 +182,6 @@
             padding-bottom: 10px;
         }
 
-        /* Sección de Servicios Minoritarios - 4x4 */
-        .servicios-minoritarios {
-            margin-bottom: 40px;
-        }
-
-        .servicios-grid-4x4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(4, auto);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .servicio-card {
-            background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .servicio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .servicio-imagen {
-            height: 140px;
-            overflow: hidden;
-            background-color: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .servicio-imagen img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .servicio-contenido {
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .servicio-contenido h3 {
-            color: #000000;
-            font-size: 18px;
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-
-        .servicio-descripcion {
-            color: #000000;
-            line-height: 1.5;
-            font-size: 14px;
-            margin-bottom: 15px;
-            flex: 1;
-        }
-
-        .servicio-contacto {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding-top: 15px;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .servicio-contacto-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #000000;
-            font-size: 13px;
-        }
-
-        .servicio-contacto-item i {
-            color: #c90f0f;
-            width: 16px;
-            text-align: center;
-        }
-
         /* Negocios grid */
         .negocios-grid {
             display: grid;
@@ -321,7 +189,7 @@
             gap: 25px;
         }
 
-        /* Sección del Negocio del Mes (ocupa 3 columnas completas) */
+        /* Sección del Negocio del Mes */
         .negocio-mes {
             grid-column: 1 / span 3;
             background-color: white;
@@ -416,7 +284,7 @@
             object-fit: cover;
         }
 
-        /* TARJETAS NORMALES DE NEGOCIOS - DISEÑO ACTUALIZADO PARA VISTA GENERAL */
+        /* TARJETAS DE NEGOCIOS - DISEÑO ESPECIAL PARA VISTA GENERAL */
         .negocio-card {
             background-color: white;
             border-radius: 12px;
@@ -424,43 +292,9 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
-            flex-direction: column;
-            min-height: 380px;
-        }
-
-        /* DISEÑO ESPECIAL PARA VISTA GENERAL: IMAGEN A LA IZQUIERDA, CONTENIDO A LA DERECHA */
-        .negocio-card.vista-general {
-            display: flex;
             flex-direction: row;
             min-height: 200px;
             height: auto;
-        }
-
-        .negocio-card.vista-general .card-imagen {
-            flex: 1;
-            height: auto;
-            min-height: 200px;
-        }
-
-        .negocio-card.vista-general .card-contenido {
-            flex: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .negocio-card.vista-general .card-header {
-            padding: 0 0 10px 0;
-        }
-
-        .negocio-card.vista-general .card-body {
-            padding: 0 0 15px 0;
-            flex: 1;
-        }
-
-        .negocio-card.vista-general .card-footer {
-            padding: 15px 0 0 0;
-            border-top: 1px solid #f0f0f0;
         }
 
         .negocio-card:hover {
@@ -468,8 +302,10 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .card-imagen {
-            height: 160px;
+        .negocio-card .card-imagen {
+            flex: 1;
+            height: auto;
+            min-height: 200px;
             overflow: hidden;
             background-color: #f8f9fa;
             display: flex;
@@ -477,18 +313,24 @@
             justify-content: center;
         }
 
-        .card-imagen img {
+        .negocio-card .card-imagen img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .card-header {
-            padding: 20px 20px 10px;
-            background-color: white;
+        .negocio-card .card-contenido {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
         }
 
-        .card-header h3 {
+        .negocio-card .card-header {
+            padding: 0 0 10px 0;
+        }
+
+        .negocio-card .card-header h3 {
             color: #000000;
             font-size: 18px;
             margin-bottom: 8px;
@@ -504,11 +346,9 @@
             border-radius: 20px;
         }
 
-        .card-body {
-            padding: 0 20px 20px;
+        .negocio-card .card-body {
+            padding: 0 0 15px 0;
             flex: 1;
-            display: flex;
-            flex-direction: column;
         }
 
         .card-descripcion {
@@ -519,11 +359,11 @@
             flex: 1;
         }
 
-        .card-footer {
+        .negocio-card .card-footer {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            padding-top: 15px;
+            padding: 15px 0 0 0;
             border-top: 1px solid #f0f0f0;
         }
 
@@ -535,36 +375,10 @@
             gap: 8px;
         }
 
-        /* Notificación temporal */
-        .notificacion-temp {
-            position: fixed;
-            top: 80px;
-            right: 30px;
-            background-color: #c90f0f;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.5s, transform 0.5s;
-            max-width: 300px;
-        }
-
-        .notificacion-temp.mostrar {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .notificacion-temp h4 {
-            margin-bottom: 5px;
-            font-size: 16px;
-        }
-
-        .notificacion-temp p {
-            font-size: 14px;
-            opacity: 0.9;
+        .card-contacto i {
+            color: #c90f0f;
+            width: 16px;
+            text-align: center;
         }
 
         /* Responsividad */
@@ -582,17 +396,12 @@
                 height: 300px;
             }
             
-            .servicios-grid-4x4 {
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: auto;
-            }
-            
-            .negocio-card.vista-general {
+            .negocio-card {
                 flex-direction: column;
                 min-height: 380px;
             }
             
-            .negocio-card.vista-general .card-imagen {
+            .negocio-card .card-imagen {
                 height: 160px;
                 min-height: auto;
             }
@@ -605,10 +414,6 @@
             
             .negocio-mes {
                 grid-column: 1 / span 2;
-            }
-            
-            .servicios-grid-4x4 {
-                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -648,67 +453,15 @@
                 grid-column: 1;
             }
             
-            .servicios-grid-4x4 {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
-            }
-            
-            .btn-info:hover {
-                width: 60px;
-                border-radius: 50%;
-                padding-left: 0;
-            }
-            
-            .btn-info:hover .btn-info-text {
-                opacity: 0;
-                max-width: 0;
-            }
-            
-            .negocio-card.vista-general {
+            .negocio-card {
                 flex-direction: column;
                 min-height: 380px;
             }
             
-            .negocio-card.vista-general .card-imagen {
+            .negocio-card .card-imagen {
                 height: 160px;
                 min-height: auto;
             }
-        }
-
-        /* Estilos para las categorías */
-        .categoria-general .card-categoria {
-            background-color: #fff0f0;
-            color: #c90f0f;
-        }
-
-        .categoria-comercio .card-categoria {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-        }
-
-        .categoria-alimentos .card-categoria {
-            background-color: #fff3e0;
-            color: #ef6c00;
-        }
-
-        .categoria-servicios .card-categoria {
-            background-color: #e3f2fd;
-            color: #1565c0;
-        }
-
-        .categoria-industria .card-categoria {
-            background-color: #f3e5f5;
-            color: #7b1fa2;
-        }
-
-        .categoria-entretenimiento .card-categoria {
-            background-color: #fff8e1;
-            color: #f57f17;
-        }
-
-        .categoria-servicios-minoritarios .card-categoria {
-            background-color: #e0f2f1;
-            color: #00796b;
         }
     </style>
 </head>
@@ -723,38 +476,38 @@
         </div>
         
         <div class="menu-categorias">
-            <div class="categoria-item active" data-categoria="general">
+            <a href="General.html" class="categoria-item active">
                 <i class="fas fa-home"></i>
                 <span>General</span>
-            </div>
-            <div class="categoria-item" data-categoria="servicios-minoritarios">
+            </a>
+            <a href="Servicio Minoritario.html" class="categoria-item">
                 <i class="fas fa-handshake"></i>
                 <span>Servicio minoritario</span>
-            </div>
-            <div class="categoria-item" data-categoria="comercio">
+            </a>
+            <a href="Comercio.html" class="categoria-item">
                 <i class="fas fa-store"></i>
                 <span>Comercio</span>
-            </div>
-            <div class="categoria-item" data-categoria="alimentos">
+            </a>
+            <a href="Alimentos y bebidas.html" class="categoria-item">
                 <i class="fas fa-utensils"></i>
                 <span>Alimentos y bebidas</span>
-            </div>
-            <div class="categoria-item" data-categoria="servicios">
+            </a>
+            <a href="Servicios.html" class="categoria-item">
                 <i class="fas fa-concierge-bell"></i>
                 <span>Servicios</span>
-            </div>
-            <div class="categoria-item" data-categoria="industria">
+            </a>
+            <a href="Industria y produccion.html" class="categoria-item">
                 <i class="fas fa-industry"></i>
                 <span>Industria y producción</span>
-            </div>
-            <div class="categoria-item" data-categoria="entretenimiento">
+            </a>
+            <a href="Entretenimiento y educacion.html" class="categoria-item">
                 <i class="fas fa-film"></i>
                 <span>Entretenimiento y educación</span>
-            </div>
+            </a>
         </div>
         
         <!-- Botón para subir negocio -->
-        <a href="Terminos y Condiciones.html" style="text-decoration: none;">
+        <a href="subir-negocio.html" style="text-decoration: none;">
             <button class="btn-subir-negocio">
                 <i class="fas fa-plus-circle"></i>
                 <span>¿Cómo puedo subir mi negocio?</span>
@@ -762,32 +515,20 @@
         </a>
     </aside>
 
-    <!-- Botón de información (signo de interrogación) -->
-    <button class="btn-info" id="btn-info">
-        <i class="fas fa-question"></i>
-        <span class="btn-info-text">Información sobre el directorio de negocios</span>
-    </button>
-
     <!-- Contenido principal -->
     <main class="main-content">
-        <!-- Navegación superior - SIN LOGO -->
+        <!-- Navegación superior -->
         <nav class="top-nav">
             <ul class="nav-links">
-                <li><a href="#" id="terminos-link">Términos y Condiciones</a></li>
-                <li><a href="#" id="historia-link">La Historia</a></li>
-                <li><a href="#" id="servicios-link">Servicios</a></li>
+                <li><a href="terminos.html" id="terminos-link">Términos y Condiciones</a></li>
+                <li><a href="historia.html" id="historia-link">La Historia</a></li>
+                <li><a href="servicios-info.html" id="servicios-link">Servicios</a></li>
             </ul>
         </nav>
 
-        <!-- Notificación temporal -->
-        <div class="notificacion-temp" id="notificacion">
-            <h4>Bienvenido a LIFE TIMES</h4>
-            <p>Descubre el negocio del mes y explora nuestras categorías</p>
-        </div>
-
         <!-- Contenedor de negocios -->
         <section class="negocios-container">
-            <h2 class="categoria-titulo" id="categoria-actual">Vista General - Negocio del Mes</h2>
+            <h2 class="categoria-titulo" id="categoria-actual">Vista General - Todos los Negocios</h2>
             
             <div class="negocios-grid" id="negocios-grid">
                 <!-- Sección del Negocio del Mes (ocupa las 3 columnas completas) -->
@@ -875,193 +616,6 @@
                     email: "cafe@aroma.com",
                     ubicacion: "Avenida del Café 303, Centro Histórico",
                     imagen: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                }
-            ],
-            "servicios-minoritarios": [
-                { 
-                    nombre: "Traducciones Express", 
-                    categoria: "Servicios Lingüísticos", 
-                    descripcion: "Traducciones profesionales en más de 20 idiomas. Documentos legales, técnicos, médicos y comerciales. Traductores certificados y servicios urgentes disponibles.", 
-                    whatsapp: "+1 (555) 111-2222",
-                    email: "traducciones@express.com",
-                    imagen: "https://images.unsplash.com/photo-1551836026-d5c2c5af78e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Cuidado de Mascotas", 
-                    categoria: "Cuidado Animal", 
-                    descripcion: "Servicios de paseo, guardería y cuidado de mascotas en tu hogar. Personal capacitado en primeros auxilios veterinarios. Disponibilidad 24/7 para emergencias.", 
-                    whatsapp: "+1 (555) 222-3333",
-                    email: "cuidado@mascotas.com",
-                    imagen: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Asesoría Financiera Personal", 
-                    categoria: "Finanzas Personales", 
-                    descripcion: "Asesoría personalizada en manejo de finanzas personales, inversiones y planificación fiscal. Enfoque en educación financiera y estrategias a medida.", 
-                    whatsapp: "+1 (555) 333-4444",
-                    email: "asesoria@finanzaspersonal.com",
-                    imagen: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Restauración de Muebles", 
-                    categoria: "Restauración", 
-                    descripcion: "Restauración profesional de muebles antiguos y modernos. Trabajamos con madera, metal y otros materiales. Preservamos el valor histórico y estético.", 
-                    whatsapp: "+1 (555) 444-5555",
-                    email: "restauracion@muebles.com",
-                    imagen: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Clases de Música a Domicilio", 
-                    categoria: "Educación Musical", 
-                    descripcion: "Clases de piano, guitarra, violín y canto en la comodidad de tu hogar. Profesores certificados y metodología personalizada según edad y nivel.", 
-                    whatsapp: "+1 (555) 555-6666",
-                    email: "clases@musica-domicilio.com",
-                    imagen: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Organización de Eventos", 
-                    categoria: "Planificación de Eventos", 
-                    descripcion: "Planificación integral de eventos sociales y corporativos. Desde bodas y fiestas hasta conferencias y lanzamientos de producto. Atención a cada detalle.", 
-                    whatsapp: "+1 (555) 666-7777",
-                    email: "eventos@organizacion.com",
-                    imagen: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Tutorías Personalizadas", 
-                    categoria: "Educación", 
-                    descripcion: "Tutorías individuales para estudiantes de primaria, secundaria y universidad. Todas las materias, preparación para exámenes y técnicas de estudio.", 
-                    whatsapp: "+1 (555) 777-8888",
-                    email: "tutorias@personalizadas.com",
-                    imagen: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Diseño de Jardines", 
-                    categoria: "Jardinería", 
-                    descripcion: "Diseño y mantenimiento de jardines residenciales y comerciales. Especialistas en plantas nativas, riego automático y jardines verticales.", 
-                    whatsapp: "+1 (555) 888-9999",
-                    email: "diseno@jardines.com",
-                    imagen: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Reparación de Bicicletas", 
-                    categoria: "Reparaciones", 
-                    descripcion: "Servicio especializado en reparación y mantenimiento de bicicletas. Desde ajustes básicos hasta reparaciones complejas. Venta de repuestos.", 
-                    whatsapp: "+1 (555) 999-0000",
-                    email: "reparacion@bicicletas.com",
-                    imagen: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Asesoría Nutricional", 
-                    categoria: "Salud", 
-                    descripcion: "Planes de alimentación personalizados según necesidades específicas. Pérdida de peso, deporte, condiciones médicas y alimentación vegetariana/vegana.", 
-                    whatsapp: "+1 (555) 000-1111",
-                    email: "nutricion@asesoria.com",
-                    imagen: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Fotografía de Productos", 
-                    categoria: "Fotografía", 
-                    descripcion: "Fotografía profesional para catálogos, redes sociales y páginas web. Estudio equipado con iluminación profesional y fondos variados.", 
-                    whatsapp: "+1 (555) 111-0000",
-                    email: "fotografia@productos.com",
-                    imagen: "https://images.unsplash.com/photo-1468436139062-f60a71c5c892?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Clases de Yoga Online", 
-                    categoria: "Bienestar", 
-                    descripcion: "Clases de yoga virtuales para todos los niveles. Estilos variados: Hatha, Vinyasa, Yin Yoga. Sesiones grupales e individuales.", 
-                    whatsapp: "+1 (555) 222-0000",
-                    email: "yoga@online.com",
-                    imagen: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Instalación de Cortinas", 
-                    categoria: "Hogar", 
-                    descripcion: "Instalación profesional de cortinas, persianas y toldos. Medición precisa, asesoría en telas y estilos, instalación rápida y limpia.", 
-                    whatsapp: "+1 (555) 333-0000",
-                    email: "cortinas@instalacion.com",
-                    imagen: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Servicio de Catering Vegano", 
-                    categoria: "Alimentación", 
-                    descripcion: "Catering especializado en comida vegana para eventos. Menús creativos, ingredientes frescos y presentación gourmet. Opciones sin gluten.", 
-                    whatsapp: "+1 (555) 444-0000",
-                    email: "catering@vegano.com",
-                    imagen: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Reparación de Calzado", 
-                    categoria: "Reparaciones", 
-                    descripcion: "Reparación y mantenimiento de calzado de todo tipo. Cambio de suelas, tacones, arreglo de costuras y limpieza profesional.", 
-                    whatsapp: "+1 (555) 555-0000",
-                    email: "calzado@reparacion.com",
-                    imagen: "https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                // NUEVOS SERVICIOS MINORITARIOS (8 adicionales)
-                { 
-                    nombre: "Coaching Ejecutivo", 
-                    categoria: "Desarrollo Profesional", 
-                    descripcion: "Coaching personalizado para ejecutivos y profesionales que buscan mejorar su liderazgo, comunicación y habilidades de gestión.", 
-                    whatsapp: "+1 (555) 666-0000",
-                    email: "coaching@ejecutivo.com",
-                    imagen: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Consultoría de Marca Personal", 
-                    categoria: "Marketing Personal", 
-                    descripcion: "Desarrollo de marca personal para profesionales independientes. Estrategias de posicionamiento, redes sociales y presencia digital.", 
-                    whatsapp: "+1 (555) 777-0000",
-                    email: "marca@personal.com",
-                    imagen: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Traducción de Subtítulos", 
-                    categoria: "Servicios Audiovisuales", 
-                    descripcion: "Traducción y subtitulado profesional para videos, películas y contenido multimedia. Sincronización precisa y adaptación cultural.", 
-                    whatsapp: "+1 (555) 888-0000",
-                    email: "subtitulos@traduccion.com",
-                    imagen: "https://images.unsplash.com/photo-1489599809516-9827b6d1cf13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Consultoría de Accesibilidad Web", 
-                    categoria: "Tecnología Inclusiva", 
-                    descripcion: "Evaluación y mejora de la accesibilidad de sitios web para personas con discapacidad. Cumplimiento de estándares WCAG.", 
-                    whatsapp: "+1 (555) 999-0000",
-                    email: "accesibilidad@web.com",
-                    imagen: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Digitalización de Archivos", 
-                    categoria: "Servicios de Digitalización", 
-                    descripcion: "Conversión de documentos físicos a formato digital. Organización, indexación y almacenamiento seguro en la nube.", 
-                    whatsapp: "+1 (555) 000-2222",
-                    email: "digitalizacion@archivos.com",
-                    imagen: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Coaching para Startups", 
-                    categoria: "Emprendimiento", 
-                    descripcion: "Asesoría especializada para emprendedores y startups. Modelos de negocio, financiamiento, pitch y crecimiento.", 
-                    whatsapp: "+1 (555) 111-2222",
-                    email: "coaching@startups.com",
-                    imagen: "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Terapia con Mascotas", 
-                    categoria: "Terapia Asistida", 
-                    descripcion: "Sesiones terapéuticas asistidas con animales para personas con necesidades especiales, estrés o problemas emocionales.", 
-                    whatsapp: "+1 (555) 222-3333",
-                    email: "terapia@mascotas.com",
-                    imagen: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                },
-                { 
-                    nombre: "Servicio de Concierge Médico", 
-                    categoria: "Servicios de Salud", 
-                    descripcion: "Coordinación de citas médicas, segundas opiniones, acompañamiento a consultas y gestión de historiales médicos.", 
-                    whatsapp: "+1 (555) 333-4444",
-                    email: "concierge@medico.com",
-                    imagen: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
                 }
             ],
             comercio: [
@@ -1347,143 +901,16 @@
         };
 
         // Elementos DOM
-        const categoriaItems = document.querySelectorAll('.categoria-item');
         const categoriaTitulo = document.getElementById('categoria-actual');
-        const negociosContainer = document.querySelector('.negocios-container');
         const negociosGrid = document.getElementById('negocios-grid');
-        const navLinks = document.querySelectorAll('.nav-links a');
-        const notificacion = document.getElementById('notificacion');
-        const btnInfo = document.getElementById('btn-info');
 
-        // Evento para el botón de información
-        btnInfo.addEventListener('click', function() {
-            alert("Directorio de Negocios LIFE TIMES\n\nEsta es una plataforma que conecta negocios locales con clientes potenciales. En la vista 'General' encontrarás una selección de negocios destacados de todas las categorías (excepto servicios minoritarios). Cada categoría muestra negocios especializados en su área. Los 'Servicios Minoritarios' incluyen oficios especializados y servicios únicos que no suelen encontrarse en directorios convencionales.");
-        });
-
-        // Función para mostrar notificación temporal
-        function mostrarNotificacion(categoria) {
-            let mensaje = '';
-            let titulo = '';
-            
-            switch(categoria) {
-                case 'general': 
-                    titulo = 'Vista General';
-                    mensaje = 'Todos los negocios de todas las categorías (excepto servicios minoritarios)';
-                    break;
-                case 'servicios-minoritarios':
-                    titulo = 'Servicios Minoritarios';
-                    mensaje = '16 servicios especializados y únicos';
-                    break;
-                case 'comercio': 
-                    titulo = 'Categoría Comercio';
-                    mensaje = 'Explora tiendas y establecimientos comerciales';
-                    break;
-                case 'alimentos': 
-                    titulo = 'Alimentos y Bebidas';
-                    mensaje = 'Restaurantes, cafeterías y establecimientos de comida';
-                    break;
-                case 'servicios': 
-                    titulo = 'Servicios';
-                    mensaje = 'Profesionales y empresas de servicios especializados';
-                    break;
-                case 'industria': 
-                    titulo = 'Industria y Producción';
-                    mensaje = 'Fabricación y producción industrial';
-                    break;
-                case 'entretenimiento': 
-                    titulo = 'Entretenimiento y Educación';
-                    mensaje = 'Cultura, entretenimiento y centros educativos';
-                    break;
-            }
-            
-            // Actualizar contenido de la notificación
-            notificacion.querySelector('h4').textContent = titulo;
-            notificacion.querySelector('p').textContent = mensaje;
-            
-            // Mostrar notificación
-            notificacion.classList.add('mostrar');
-            
-            // Ocultar después de 5 segundos
-            setTimeout(() => {
-                notificacion.classList.remove('mostrar');
-            }, 5000);
-        }
-
-        // Función para cargar sección de Servicios Minoritarios - FORMATO 4x4
-        function cargarServiciosMinoritarios() {
-            // Actualizar título
-            categoriaTitulo.textContent = 'Servicios Minoritarios (16 servicios)';
-            
-            // Limpiar grid
-            negociosGrid.innerHTML = '';
-            
-            // Crear contenedor de servicios minoritarios con formato 4x4
-            const serviciosHTML = `
-                <div class="servicios-minoritarios">
-                    <div class="servicios-grid-4x4">
-                        <!-- Los 16 servicios se cargarán dinámicamente en formato 4x4 -->
-                    </div>
-                </div>
-            `;
-            
-            // Insertar HTML
-            negociosContainer.innerHTML = `
-                <h2 class="categoria-titulo" id="categoria-actual">Servicios Minoritarios (16 servicios)</h2>
-                ${serviciosHTML}
-            `;
-            
-            // Obtener referencia al grid 4x4
-            const serviciosGrid = document.querySelector('.servicios-grid-4x4');
-            
-            // Obtener servicios minoritarios (todos los 16 para formato 4x4)
-            const listaServicios = negocios['servicios-minoritarios'].slice(0, 16);
-            
-            // Crear tarjetas para cada servicio en formato 4x4
-            listaServicios.forEach(servicio => {
-                const tarjeta = document.createElement('div');
-                tarjeta.className = `servicio-card categoria-servicios-minoritarios`;
-                
-                // Crear HTML de la tarjeta de servicio
-                tarjeta.innerHTML = `
-                    <div class="servicio-imagen">
-                        <img src="${servicio.imagen}" alt="${servicio.nombre}">
-                    </div>
-                    <div class="servicio-contenido">
-                        <h3>${servicio.nombre}</h3>
-                        <p class="servicio-descripcion">${servicio.descripcion}</p>
-                        <div class="servicio-contacto">
-                            <div class="servicio-contacto-item">
-                                <i class="fab fa-whatsapp"></i>
-                                <span>${servicio.whatsapp}</span>
-                            </div>
-                            <div class="servicio-contacto-item">
-                                <i class="fas fa-envelope"></i>
-                                <span>${servicio.email}</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                // Agregar tarjeta al grid 4x4
-                serviciosGrid.appendChild(tarjeta);
-            });
-        }
-
-        // Función para cargar TODOS los negocios en la vista General (excepto servicios minoritarios)
+        // Función para cargar TODOS los negocios en la vista General
         function cargarTodosNegociosGeneral() {
             // Actualizar título
             categoriaTitulo.textContent = 'Vista General - Todos los Negocios';
             
-            // Restaurar estructura normal
-            negociosContainer.innerHTML = `
-                <h2 class="categoria-titulo" id="categoria-actual">Vista General - Todos los Negocios</h2>
-                <div class="negocios-grid" id="negocios-grid">
-                    <!-- Negocio del mes + TODOS los negocios de todas las categorías -->
-                </div>
-            `;
-            
-            // Obtener referencia al grid
-            const grid = document.getElementById('negocios-grid');
+            // Limpiar grid
+            negociosGrid.innerHTML = '';
             
             // Agregar el negocio del mes
             const negocioMesHTML = `
@@ -1518,25 +945,20 @@
                     </div>
                 </div>
             `;
-            grid.innerHTML = negocioMesHTML;
+            negociosGrid.innerHTML = negocioMesHTML;
             
-            // Combinar TODOS los negocios de todas las categorías excepto servicios-minoritarios
+            // Combinar TODOS los negocios de todas las categorías
             let todosNegocios = [];
-            const categoriasExcluir = ['servicios-minoritarios', 'general'];
             
+            // Incluir negocios de todas las categorías
             for (const categoria in negocios) {
-                if (!categoriasExcluir.includes(categoria)) {
-                    todosNegocios = todosNegocios.concat(negocios[categoria]);
-                }
+                todosNegocios = todosNegocios.concat(negocios[categoria]);
             }
             
-            // También agregar los negocios de la categoría general
-            todosNegocios = todosNegocios.concat(negocios['general']);
-            
-            // Crear tarjetas para CADA negocio (no solo 6, TODOS)
+            // Crear tarjetas para CADA negocio
             todosNegocios.forEach(negocio => {
                 const tarjeta = document.createElement('div');
-                tarjeta.className = `negocio-card categoria-general vista-general`;
+                tarjeta.className = `negocio-card`;
                 
                 // Crear HTML de la tarjeta CON DISEÑO ESPECIAL: imagen a la izquierda, contenido a la derecha
                 tarjeta.innerHTML = `
@@ -1571,153 +993,13 @@
                 `;
                 
                 // Agregar tarjeta al grid
-                grid.appendChild(tarjeta);
+                negociosGrid.appendChild(tarjeta);
             });
         }
-
-        // Función para cargar negocios por categoría
-        function cargarNegocios(categoria) {
-            // Si es la categoría de servicios minoritarios, cargar esa sección especial
-            if (categoria === 'servicios-minoritarios') {
-                cargarServiciosMinoritarios();
-                return;
-            }
-            
-            // Si es la categoría general, cargar todos los negocios (excepto servicios minoritarios)
-            if (categoria === 'general') {
-                cargarTodosNegociosGeneral();
-                return;
-            }
-            
-            // Actualizar título para otras categorías
-            let tituloCategoria = '';
-            switch(categoria) {
-                case 'comercio': 
-                    tituloCategoria = 'Comercio'; 
-                    break;
-                case 'alimentos': 
-                    tituloCategoria = 'Alimentos y Bebidas'; 
-                    break;
-                case 'servicios': 
-                    tituloCategoria = 'Servicios'; 
-                    break;
-                case 'industria': 
-                    tituloCategoria = 'Industria y Producción'; 
-                    break;
-                case 'entretenimiento': 
-                    tituloCategoria = 'Entretenimiento y Educación'; 
-                    break;
-            }
-            categoriaTitulo.textContent = tituloCategoria;
-            
-            // Restaurar estructura normal
-            negociosContainer.innerHTML = `
-                <h2 class="categoria-titulo" id="categoria-actual">${tituloCategoria}</h2>
-                <div class="negocios-grid" id="negocios-grid">
-                    <!-- Contenido se cargará dinámicamente -->
-                </div>
-            `;
-            
-            // Obtener referencia al grid
-            const grid = document.getElementById('negocios-grid');
-            
-            // Obtener negocios de la categoría seleccionada
-            const listaNegocios = negocios[categoria];
-            
-            // Crear tarjetas para cada negocio (diseño normal, no el especial de vista-general)
-            listaNegocios.forEach(negocio => {
-                const tarjeta = document.createElement('div');
-                tarjeta.className = `negocio-card categoria-${categoria}`;
-                
-                // Crear HTML de la tarjeta con imagen y contactos completos
-                tarjeta.innerHTML = `
-                    <div class="card-imagen">
-                        <img src="${negocio.imagen}" alt="${negocio.nombre}">
-                    </div>
-                    <div class="card-header">
-                        <h3>${negocio.nombre}</h3>
-                        <span class="card-categoria">${negocio.categoria}</span>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-descripcion">${negocio.descripcion}</p>
-                        <div class="card-footer">
-                            <div class="card-contacto">
-                                <i class="fab fa-whatsapp"></i>
-                                <span>${negocio.whatsapp}</span>
-                            </div>
-                            <div class="card-contacto">
-                                <i class="fas fa-envelope"></i>
-                                <span>${negocio.email}</span>
-                            </div>
-                            <div class="card-contacto">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>${negocio.ubicacion}</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                // Agregar tarjeta al grid
-                grid.appendChild(tarjeta);
-            });
-        }
-
-        // Función para cambiar categoría activa
-        function cambiarCategoriaActiva(categoria) {
-            // Remover clase active de todos los items
-            categoriaItems.forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Agregar clase active al item seleccionado
-            document.querySelector(`[data-categoria="${categoria}"]`).classList.add('active');
-            
-            // Mostrar notificación temporal
-            mostrarNotificacion(categoria);
-            
-            // Cargar negocios de la categoría seleccionada
-            cargarNegocios(categoria);
-        }
-
-        // Event listeners para los items del menú lateral
-        categoriaItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const categoria = this.getAttribute('data-categoria');
-                cambiarCategoriaActiva(categoria);
-            });
-        });
-
-        // Event listeners para los enlaces del menú superior
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const id = this.id;
-                let mensaje = '';
-                
-                switch(id) {
-                    case 'terminos-link':
-                        mensaje = "Términos y Condiciones: Esta es una página de demostración. Los datos presentados son ficticios y solo tienen fines ilustrativos.";
-                        break;
-                    case 'historia-link':
-                        mensaje = "La Historia: LIFE TIMES fue fundada en 2020 con el objetivo de conectar negocios locales con clientes potenciales. Hoy contamos con más de 500 empresas registradas en nuestro directorio.";
-                        break;
-                    case 'servicios-link':
-                        mensaje = "Servicios: Ofrecemos un directorio de negocios categorizado, visibilidad para empresas locales, y herramientas de marketing digital para emprendedores.";
-                        break;
-                }
-                
-                alert(mensaje);
-            });
-        });
 
         // Cargar página inicial (General con TODOS los negocios)
         document.addEventListener('DOMContentLoaded', function() {
             cargarTodosNegociosGeneral();
-            
-            // Mostrar notificación de bienvenida después de 1 segundo
-            setTimeout(() => {
-                mostrarNotificacion('general');
-            }, 1000);
         });
     </script>
 </body>

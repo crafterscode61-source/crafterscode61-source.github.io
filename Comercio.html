@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorio de Negocios LIFE TIMES - Comercio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: #f5f7fa;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* Barra lateral con menú fijo */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(to bottom, #c90f0f, #a00c0c);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 20px 0;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            text-align: center;
+            padding: 20px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+            transition: transform 0.3s;
+        }
+
+        .logo h1:hover {
+            transform: scale(1.05);
+        }
+
+        .logo span {
+            color: #ffffff;
+        }
+
+        .logo p {
+            margin-top: 5px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .menu-categorias {
+            padding: 0 15px;
+            flex: 1;
+        }
+
+        .categoria-item {
+            padding: 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            text-decoration: none;
+            color: white;
+        }
+
+        .categoria-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+
+        .categoria-item.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-left: 4px solid #ffffff;
+        }
+
+        .categoria-item i {
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Botón para subir negocio */
+        .btn-subir-negocio {
+            margin: 20px 15px;
+            padding: 15px;
+            background-color: rgba(128, 128, 128, 0.3);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+            width: calc(100% - 30px);
+        }
+
+        .btn-subir-negocio:hover {
+            background-color: rgba(128, 128, 128, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-subir-negocio i {
+            font-size: 18px;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        /* Navegación superior */
+        .top-nav {
+            background-color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: #c90f0f;
+        }
+
+        /* Contenedor de tarjetas */
+        .negocios-container {
+            padding: 30px;
+            flex: 1;
+        }
+
+        .categoria-titulo {
+            margin-bottom: 25px;
+            color: #000000;
+            font-size: 28px;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+        }
+
+        /* Negocios grid */
+        .negocios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* Tarjetas normales de comercio */
+        .negocio-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            min-height: 380px;
+        }
+
+        .negocio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-imagen {
+            height: 160px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-header {
+            padding: 20px 20px 10px;
+            background-color: white;
+        }
+
+        .card-header h3 {
+            color: #000000;
+            font-size: 18px;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .card-categoria {
+            color: #2e7d32;
+            font-size: 13px;
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: #e8f5e9;
+            border-radius: 20px;
+        }
+
+        .card-body {
+            padding: 0 20px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-descripcion {
+            color: #000000;
+            line-height: 1.5;
+            font-size: 14px;
+            margin-bottom: 15px;
+            flex: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .card-contacto {
+            color: #000000;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-contacto i {
+            color: #c90f0f;
+            width: 16px;
+            text-align: center;
+        }
+
+        /* Responsividad */
+        @media (max-width: 1200px) {
+            .negocio-card {
+                min-height: 400px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .negocios-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            body {
+                flex-direction: column;
+            }
+            
+            .top-nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+                justify-content: center;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .negocios-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú lateral fijo -->
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <h1>LIFE <span>TIMES</span></h1>
+            </a>
+            <p>Directorio de Negocios</p>
+        </div>
+        
+        <div class="menu-categorias">
+            <a href="General.html" class="categoria-item">
+                <i class="fas fa-home"></i>
+                <span>General</span>
+            </a>
+            <a href="Servicio Minoritario.html" class="categoria-item">
+                <i class="fas fa-handshake"></i>
+                <span>Servicio minoritario</span>
+            </a>
+            <a href="Comercio.html" class="categoria-item active">
+                <i class="fas fa-store"></i>
+                <span>Comercio</span>
+            </a>
+            <a href="Alimentos y bebidas.html" class="categoria-item">
+                <i class="fas fa-utensils"></i>
+                <span>Alimentos y bebidas</span>
+            </a>
+            <a href="Servicios.html" class="categoria-item">
+                <i class="fas fa-concierge-bell"></i>
+                <span>Servicios</span>
+            </a>
+            <a href="Industria y produccion.html" class="categoria-item">
+                <i class="fas fa-industry"></i>
+                <span>Industria y producción</span>
+            </a>
+            <a href="Entretenimiento y educacion.html" class="categoria-item">
+                <i class="fas fa-film"></i>
+                <span>Entretenimiento y educación</span>
+            </a>
+        </div>
+        
+        <!-- Botón para subir negocio -->
+        <a href="subir-negocio.html" style="text-decoration: none;">
+            <button class="btn-subir-negocio">
+                <i class="fas fa-plus-circle"></i>
+                <span>¿Cómo puedo subir mi negocio?</span>
+            </button>
+        </a>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Navegación superior -->
+        <nav class="top-nav">
+            <ul class="nav-links">
+                <li><a href="terminos.html" id="terminos-link">Términos y Condiciones</a></li>
+                <li><a href="historia.html" id="historia-link">La Historia</a></li>
+                <li><a href="servicios-info.html" id="servicios-link">Servicios</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenedor de negocios -->
+        <section class="negocios-container">
+            <h2 class="categoria-titulo" id="categoria-actual">Comercio</h2>
+            
+            <div class="negocios-grid" id="negocios-grid">
+                <!-- Tarjetas de comercio se cargarán dinámicamente -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Datos de ejemplo para negocios de comercio
+        const negociosComercio = [
+            { 
+                nombre: "Moda Elegante", 
+                categoria: "Ropa y Accesorios", 
+                descripcion: "Tienda de ropa de última moda para hombres y mujeres. Ofrecemos las mejores marcas a precios competitivos. Asesoría de imagen personalizada.", 
+                whatsapp: "+1 (555) 789-0123",
+                email: "contacto@modaelegante.com",
+                ubicacion: "Centro Comercial Moda, Local 45",
+                imagen: "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "TecnoShop", 
+                categoria: "Electrónica", 
+                descripcion: "Venta de dispositivos electrónicos, smartphones, laptops y accesorios tecnológicos con garantía oficial. Asesoría técnica y financiamiento disponible.", 
+                whatsapp: "+1 (555) 890-1234",
+                email: "info@tecnoshop.com",
+                ubicacion: "Plaza Tecnológica 505",
+                imagen: "https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Muebles del Hogar", 
+                categoria: "Mobiliario", 
+                descripcion: "Amplia variedad de muebles para el hogar y oficina. Diseño, calidad y comodidad en un solo lugar. Diseño de interiores incluido en compras mayores.", 
+                whatsapp: "+1 (555) 901-2345",
+                email: "ventas@muebleshogar.com",
+                ubicacion: "Boulevard del Mueble 606",
+                imagen: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Deportes Extremos", 
+                categoria: "Artículos Deportivos", 
+                descripcion: "Equipamiento para deportes de aventura: ciclismo, montañismo, escalada y más. Asesoría especializada y alquiler de equipo disponible.", 
+                whatsapp: "+1 (555) 012-3456",
+                email: "ventas@deportextremo.com",
+                ubicacion: "Avenida Aventura 707",
+                imagen: "https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Librería Cultural", 
+                categoria: "Libros y Papelería", 
+                descripcion: "Amplia selección de libros, revistas y artículos de papelería. Espacio de lectura incluido. Club de lectura los fines de semana.", 
+                whatsapp: "+1 (555) 123-4567",
+                email: "info@libreriacultural.com",
+                ubicacion: "Calle de los Libros 808",
+                imagen: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Joyas Preciosas", 
+                categoria: "Joyería", 
+                descripcion: "Joyas finas en oro, plata y diamantes. Diseños exclusivos y personalizados. Certificación de autenticidad en todas nuestras piezas.", 
+                whatsapp: "+1 (555) 234-5678",
+                email: "ventas@joyaspreciosas.com",
+                ubicacion: "Centro Joyero, Local 12",
+                imagen: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Tienda de Deportes", 
+                categoria: "Artículos Deportivos", 
+                descripcion: "Equipamiento para todo tipo de deportes: fútbol, baloncesto, tenis, natación. Marcas reconocidas y asesoría especializada.", 
+                whatsapp: "+1 (555) 345-6789",
+                email: "ventas@tiendadeportes.com",
+                ubicacion: "Centro Deportivo 909",
+                imagen: "https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Óptica Visión Clara", 
+                categoria: "Salud y Bienestar", 
+                descripcion: "Exámenes de la vista, lentes de contacto, anteojos de sol y monturas de diseñador. Tecnología avanzada y servicio personalizado.", 
+                whatsapp: "+1 (555) 456-7890",
+                email: "citas@opticavisionclara.com",
+                ubicacion: "Centro Comercial Vista, Local 23",
+                imagen: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Ferretería El Constructor", 
+                categoria: "Materiales de Construcción", 
+                descripcion: "Herramientas, materiales de construcción, pinturas y artículos para el hogar. Asesoría técnica y entrega a domicilio disponible.", 
+                whatsapp: "+1 (555) 567-8901",
+                email: "ventas@ferreteriaconstructor.com",
+                ubicacion: "Zona Industrial Norte 111",
+                imagen: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        // Elementos DOM
+        const categoriaTitulo = document.getElementById('categoria-actual');
+        const negociosGrid = document.getElementById('negocios-grid');
+
+        // Función para cargar negocios de comercio
+        function cargarNegociosComercio() {
+            // Actualizar título
+            categoriaTitulo.textContent = 'Comercio';
+            
+            // Limpiar grid
+            negociosGrid.innerHTML = '';
+            
+            // Crear tarjetas para cada negocio de comercio
+            negociosComercio.forEach(negocio => {
+                const tarjeta = document.createElement('div');
+                tarjeta.className = `negocio-card`;
+                
+                // Crear HTML de la tarjeta
+                tarjeta.innerHTML = `
+                    <div class="card-imagen">
+                        <img src="${negocio.imagen}" alt="${negocio.nombre}">
+                    </div>
+                    <div class="card-header">
+                        <h3>${negocio.nombre}</h3>
+                        <span class="card-categoria">${negocio.categoria}</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-descripcion">${negocio.descripcion}</p>
+                        <div class="card-footer">
+                            <div class="card-contacto">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>${negocio.whatsapp}</span>
+                            </div>
+                            <div class="card-contacto">
+                                <i class="fas fa-envelope"></i>
+                                <span>${negocio.email}</span>
+                            </div>
+                            <div class="card-contacto">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${negocio.ubicacion}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Agregar tarjeta al grid
+                negociosGrid.appendChild(tarjeta);
+            });
+        }
+
+        // Cargar página inicial (Comercio)
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarNegociosComercio();
+        });
+    </script>
+</body>
+</html>

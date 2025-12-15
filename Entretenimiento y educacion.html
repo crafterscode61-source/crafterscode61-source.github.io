@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entretenimiento y Educación - LIFE TIMES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* Barra lateral con menú fijo */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(to bottom, #c90f0f, #a00c0c);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 20px 0;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            text-align: center;
+            padding: 20px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .logo h1:hover {
+            transform: scale(1.05);
+        }
+
+        .logo span {
+            color: #ffffff;
+        }
+
+        .logo p {
+            margin-top: 5px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .menu-categorias {
+            padding: 0 15px;
+            flex: 1;
+        }
+
+        .categoria-item {
+            padding: 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            text-decoration: none;
+            color: white;
+        }
+
+        .categoria-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+
+        .categoria-item.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-left: 4px solid #ffffff;
+        }
+
+        .categoria-item i {
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Botón para subir negocio */
+        .btn-subir-negocio {
+            margin: 20px 15px;
+            padding: 15px;
+            background-color: rgba(128, 128, 128, 0.3);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+            width: calc(100% - 30px);
+        }
+
+        .btn-subir-negocio:hover {
+            background-color: rgba(128, 128, 128, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-subir-negocio i {
+            font-size: 18px;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            margin-left: 280px;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        /* Navegación superior */
+        .top-nav {
+            background-color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: #c90f0f;
+        }
+
+        /* Contenedor de tarjetas */
+        .negocios-container {
+            padding: 30px;
+            flex: 1;
+        }
+
+        .categoria-titulo {
+            margin-bottom: 25px;
+            color: #000000;
+            font-size: 28px;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+        }
+
+        /* Negocios grid */
+        .negocios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* TARJETAS DE NEGOCIOS */
+        .negocio-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            min-height: 380px;
+        }
+
+        .negocio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-imagen {
+            height: 160px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-header {
+            padding: 20px 20px 10px;
+            background-color: white;
+        }
+
+        .card-header h3 {
+            color: #000000;
+            font-size: 18px;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .card-categoria {
+            color: #f57f17;
+            font-size: 13px;
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: #fff8e1;
+            border-radius: 20px;
+        }
+
+        .card-body {
+            padding: 0 20px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-descripcion {
+            color: #000000;
+            line-height: 1.5;
+            font-size: 14px;
+            margin-bottom: 15px;
+            flex: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .card-contacto {
+            color: #000000;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-contacto i {
+            color: #c90f0f;
+            width: 16px;
+            text-align: center;
+        }
+
+        /* Responsividad */
+        @media (max-width: 1200px) {
+            .negocios-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .top-nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+                justify-content: center;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .negocios-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú lateral fijo -->
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="Index.html" style="text-decoration: none; color: inherit;">
+                <h1>LIFE <span>TIMES</span></h1>
+            </a>
+            <p>Directorio de Negocios</p>
+        </div>
+        
+        <div class="menu-categorias">
+            <a href="General.html" class="categoria-item">
+                <i class="fas fa-home"></i>
+                <span>General</span>
+            </a>
+            <a href="Servicio Minoritario.html" class="categoria-item">
+                <i class="fas fa-handshake"></i>
+                <span>Servicio minoritario</span>
+            </a>
+            <a href="Comercio.html" class="categoria-item">
+                <i class="fas fa-store"></i>
+                <span>Comercio</span>
+            </a>
+            <a href="Alimentos y bebidas.html" class="categoria-item">
+                <i class="fas fa-utensils"></i>
+                <span>Alimentos y bebidas</span>
+            </a>
+            <a href="Servicios.html" class="categoria-item">
+                <i class="fas fa-concierge-bell"></i>
+                <span>Servicios</span>
+            </a>
+            <a href="Industria y produccion.html" class="categoria-item">
+                <i class="fas fa-industry"></i>
+                <span>Industria y producción</span>
+            </a>
+            <a href="Entretenimiento y educacion.html" class="categoria-item active">
+                <i class="fas fa-film"></i>
+                <span>Entretenimiento y educación</span>
+            </a>
+        </div>
+        
+        <!-- Botón para subir negocio -->
+        <a href="subir-negocio.html" style="text-decoration: none;">
+            <button class="btn-subir-negocio">
+                <i class="fas fa-plus-circle"></i>
+                <span>¿Cómo puedo subir mi negocio?</span>
+            </button>
+        </a>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Navegación superior -->
+        <nav class="top-nav">
+            <ul class="nav-links">
+                <li><a href="terminos.html" id="terminos-link">Términos y Condiciones</a></li>
+                <li><a href="historia.html" id="historia-link">La Historia</a></li>
+                <li><a href="servicios-info.html" id="servicios-link">Servicios</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenedor de negocios -->
+        <section class="negocios-container">
+            <h2 class="categoria-titulo">Entretenimiento y Educación</h2>
+            
+            <div class="negocios-grid" id="negocios-grid">
+                <!-- Negocios de entretenimiento y educación se cargarán aquí -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Datos de negocios de Entretenimiento y Educación
+        const negociosEntretenimiento = [
+            { 
+                nombre: "Cine Paradiso", 
+                categoria: "Cine", 
+                descripcion: "Complejo cinematográfico con 8 salas, tecnología 4K y sonido envolvente. Estrenos todas las semanas. Sala VIP con butacas reclinables.", 
+                whatsapp: "+1 (555) 123-4567",
+                email: "info@cineparadiso.com",
+                ubicacion: "Centro de Entretenimiento 2727",
+                imagen: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Escuela de Arte Moderno", 
+                categoria: "Educación Artística", 
+                descripcion: "Clases de pintura, dibujo, escultura y fotografía para todas las edades y niveles de experiencia. Exposiciones periódicas de alumnos.", 
+                whatsapp: "+1 (555) 234-5678",
+                email: "admisiones@escuelaartemoderno.com",
+                ubicacion: "Distrito de las Artes 2828",
+                imagen: "https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "GamerZone", 
+                categoria: "Centro de Entretenimiento", 
+                descripcion: "Arcade con más de 50 consolas y juegos, torneos regulares y zona de realidad virtual. Snacks y bebidas disponibles. Eventos especiales cada mes.", 
+                whatsapp: "+1 (555) 345-6789",
+                email: "reservas@gamerzone.com",
+                ubicacion: "Plaza del Videojuego 2929",
+                imagen: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Biblioteca del Saber", 
+                categoria: "Biblioteca y Centro Cultural", 
+                descripcion: "Amplia colección de libros, talleres literarios, club de lectura y actividades culturales gratuitas. Espacios para estudio y investigación.", 
+                whatsapp: "+1 (555) 456-7890",
+                email: "cultura@bibliotecasaber.com",
+                ubicacion: "Centro Cultural Municipal 3030",
+                imagen: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Teatro Municipal", 
+                categoria: "Teatro", 
+                descripcion: "Presentaciones teatrales, conciertos y eventos culturales en un histórico recinto. Acústica excepcional y arquitectura impresionante.", 
+                whatsapp: "+1 (555) 567-8901",
+                email: "boletos@teatromunicipal.com",
+                ubicacion: "Plaza Central 3131",
+                imagen: "https://images.unsplash.com/photo-1492684223066-dd23140edf6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Parque de Diversiones", 
+                categoria: "Parque Temático", 
+                descripcion: "Más de 20 atracciones para todas las edades, shows en vivo y áreas de comida. Eventos especiales según temporada. Pases familiares disponibles.", 
+                whatsapp: "+1 (555) 678-9012",
+                email: "info@parquediversiones.com",
+                ubicacion: "Parque de Atracciones 3232",
+                imagen: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Academia de Música Melodía", 
+                categoria: "Educación Musical", 
+                descripcion: "Clases de piano, guitarra, violín, canto y teoría musical para todas las edades. Profesores certificados y conciertos estudiantiles trimestrales.", 
+                whatsapp: "+1 (555) 789-0123",
+                email: "info@academiamelodia.com",
+                ubicacion: "Avenida Musical 3333",
+                imagen: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Museo de Ciencias Interactivo", 
+                categoria: "Museo Educativo", 
+                descripcion: "Exhibiciones interactivas sobre ciencia, tecnología e innovación. Talleres para niños, conferencias y visitas guiadas para escuelas.", 
+                whatsapp: "+1 (555) 890-1234",
+                email: "visitas@museociencias.com",
+                ubicacion: "Parque Científico 3434",
+                imagen: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            },
+            { 
+                nombre: "Estudio de Danza Contemporánea", 
+                categoria: "Educación en Danza", 
+                descripcion: "Clases de ballet, contemporáneo, jazz y hip-hop para todas las edades y niveles. Presentaciones anuales y preparación para competencias.", 
+                whatsapp: "+1 (555) 901-2345",
+                email: "info@estudiodanza.com",
+                ubicacion: "Centro de Danza 3535",
+                imagen: "https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        // Elementos DOM
+        const negociosGrid = document.getElementById('negocios-grid');
+
+        // Función para cargar negocios de entretenimiento
+        function cargarNegociosEntretenimiento() {
+            // Limpiar grid
+            negociosGrid.innerHTML = '';
+            
+            // Crear tarjetas para cada negocio
+            negociosEntretenimiento.forEach(negocio => {
+                const tarjeta = document.createElement('div');
+                tarjeta.className = `negocio-card`;
+                
+                // Crear HTML de la tarjeta
+                tarjeta.innerHTML = `
+                    <div class="card-imagen">
+                        <img src="${negocio.imagen}" alt="${negocio.nombre}">
+                    </div>
+                    <div class="card-header">
+                        <h3>${negocio.nombre}</h3>
+                        <span class="card-categoria">${negocio.categoria}</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-descripcion">${negocio.descripcion}</p>
+                        <div class="card-footer">
+                            <div class="card-contacto">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>${negocio.whatsapp}</span>
+                            </div>
+                            <div class="card-contacto">
+                                <i class="fas fa-envelope"></i>
+                                <span>${negocio.email}</span>
+                            </div>
+                            <div class="card-contacto">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${negocio.ubicacion}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Agregar tarjeta al grid
+                negociosGrid.appendChild(tarjeta);
+            });
+        }
+
+        // Cargar negocios al iniciar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarNegociosEntretenimiento();
+        });
+    </script>
+</body>
+</html>

@@ -416,7 +416,7 @@
             object-fit: cover;
         }
 
-        /* TARJETAS NORMALES DE NEGOCIOS - DISEÑO ACTUALIZADO PARA VISTA GENERAL */
+        /* Tarjetas normales de negocios */
         .negocio-card {
             background-color: white;
             border-radius: 12px;
@@ -426,41 +426,6 @@
             display: flex;
             flex-direction: column;
             min-height: 380px;
-        }
-
-        /* DISEÑO ESPECIAL PARA VISTA GENERAL: IMAGEN A LA IZQUIERDA, CONTENIDO A LA DERECHA */
-        .negocio-card.vista-general {
-            display: flex;
-            flex-direction: row;
-            min-height: 200px;
-            height: auto;
-        }
-
-        .negocio-card.vista-general .card-imagen {
-            flex: 1;
-            height: auto;
-            min-height: 200px;
-        }
-
-        .negocio-card.vista-general .card-contenido {
-            flex: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .negocio-card.vista-general .card-header {
-            padding: 0 0 10px 0;
-        }
-
-        .negocio-card.vista-general .card-body {
-            padding: 0 0 15px 0;
-            flex: 1;
-        }
-
-        .negocio-card.vista-general .card-footer {
-            padding: 15px 0 0 0;
-            border-top: 1px solid #f0f0f0;
         }
 
         .negocio-card:hover {
@@ -586,16 +551,6 @@
                 grid-template-columns: repeat(3, 1fr);
                 grid-template-rows: auto;
             }
-            
-            .negocio-card.vista-general {
-                flex-direction: column;
-                min-height: 380px;
-            }
-            
-            .negocio-card.vista-general .card-imagen {
-                height: 160px;
-                min-height: auto;
-            }
         }
 
         @media (max-width: 1024px) {
@@ -662,16 +617,6 @@
             .btn-info:hover .btn-info-text {
                 opacity: 0;
                 max-width: 0;
-            }
-            
-            .negocio-card.vista-general {
-                flex-direction: column;
-                min-height: 380px;
-            }
-            
-            .negocio-card.vista-general .card-imagen {
-                height: 160px;
-                min-height: auto;
             }
         }
 
@@ -1368,7 +1313,7 @@
             switch(categoria) {
                 case 'general': 
                     titulo = 'Vista General';
-                    mensaje = 'Todos los negocios de todas las categorías (excepto servicios minoritarios)';
+                    mensaje = 'Negocios destacados de todas las categorías (excepto servicios minoritarios)';
                     break;
                 case 'servicios-minoritarios':
                     titulo = 'Servicios Minoritarios';
@@ -1472,13 +1417,13 @@
         // Función para cargar TODOS los negocios en la vista General (excepto servicios minoritarios)
         function cargarTodosNegociosGeneral() {
             // Actualizar título
-            categoriaTitulo.textContent = 'Vista General - Todos los Negocios';
+            categoriaTitulo.textContent = 'Vista General - Negocios Destacados';
             
             // Restaurar estructura normal
             negociosContainer.innerHTML = `
-                <h2 class="categoria-titulo" id="categoria-actual">Vista General - Todos los Negocios</h2>
+                <h2 class="categoria-titulo" id="categoria-actual">Vista General - Negocios Destacados</h2>
                 <div class="negocios-grid" id="negocios-grid">
-                    <!-- Negocio del mes + TODOS los negocios de todas las categorías -->
+                    <!-- Negocio del mes + negocios de todas las categorías -->
                 </div>
             `;
             
@@ -1520,7 +1465,7 @@
             `;
             grid.innerHTML = negocioMesHTML;
             
-            // Combinar TODOS los negocios de todas las categorías excepto servicios-minoritarios
+            // Combinar negocios de todas las categorías excepto servicios-minoritarios
             let todosNegocios = [];
             const categoriasExcluir = ['servicios-minoritarios', 'general'];
             
@@ -1530,27 +1475,27 @@
                 }
             }
             
-            // También agregar los negocios de la categoría general
-            todosNegocios = todosNegocios.concat(negocios['general']);
+            // Mezclar aleatoriamente y tomar solo 6 para mostrar en general
+            const negociosAleatorios = [...todosNegocios]
+                .sort(() => 0.5 - Math.random())
+                .slice(0, 6);
             
-            // Crear tarjetas para CADA negocio (no solo 6, TODOS)
-            todosNegocios.forEach(negocio => {
+            // Crear tarjetas para cada negocio
+            negociosAleatorios.forEach(negocio => {
                 const tarjeta = document.createElement('div');
-                tarjeta.className = `negocio-card categoria-general vista-general`;
+                tarjeta.className = `negocio-card categoria-general`;
                 
-                // Crear HTML de la tarjeta CON DISEÑO ESPECIAL: imagen a la izquierda, contenido a la derecha
+                // Crear HTML de la tarjeta con imagen y contactos completos
                 tarjeta.innerHTML = `
                     <div class="card-imagen">
                         <img src="${negocio.imagen}" alt="${negocio.nombre}">
                     </div>
-                    <div class="card-contenido">
-                        <div class="card-header">
-                            <h3>${negocio.nombre}</h3>
-                            <span class="card-categoria">${negocio.categoria}</span>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-descripcion">${negocio.descripcion}</p>
-                        </div>
+                    <div class="card-header">
+                        <h3>${negocio.nombre}</h3>
+                        <span class="card-categoria">${negocio.categoria}</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-descripcion">${negocio.descripcion}</p>
                         <div class="card-footer">
                             <div class="card-contacto">
                                 <i class="fab fa-whatsapp"></i>
@@ -1560,12 +1505,10 @@
                                 <i class="fas fa-envelope"></i>
                                 <span>${negocio.email}</span>
                             </div>
-                            ${negocio.ubicacion ? `
                             <div class="card-contacto">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>${negocio.ubicacion}</span>
                             </div>
-                            ` : ''}
                         </div>
                     </div>
                 `;
@@ -1624,7 +1567,7 @@
             // Obtener negocios de la categoría seleccionada
             const listaNegocios = negocios[categoria];
             
-            // Crear tarjetas para cada negocio (diseño normal, no el especial de vista-general)
+            // Crear tarjetas para cada negocio
             listaNegocios.forEach(negocio => {
                 const tarjeta = document.createElement('div');
                 tarjeta.className = `negocio-card categoria-${categoria}`;
@@ -1710,7 +1653,7 @@
             });
         });
 
-        // Cargar página inicial (General con TODOS los negocios)
+        // Cargar página inicial (General con todos los negocios)
         document.addEventListener('DOMContentLoaded', function() {
             cargarTodosNegociosGeneral();
             
